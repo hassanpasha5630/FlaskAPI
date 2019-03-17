@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	    
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	   	 <!-- this is for ajax -->
+	   	
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+	<title>User Dash Board</title>
+</head>
+<body>
+<section id="Header"> 
+<div class="container">
+<center><h1 style="margin-top:1em; ">Welcome To Your NON-Memeber Dash Board</h1>
+		<h5 style="margin-top: .5em;"> Set & View Key Values Non Members can only set/get </h5>
+</center>
+
+</div>
+<form id="options" method="POST">
+<div class="container" style="text-align:center;margin-top:2em">
+					<div class="row">
+								
+						<div class="col-sm-12 col-md-12  col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Set Value</h5>
+										  <p class="card-text"> Set a Key and Value </p>
+
+										  <a href="#" class="btn btn-primary" data-target="#SET" data-toggle="modal">SET</a>
+<!-- 										  <input type = "submit" class="btn btn-primary" name="Sin" value="Sign Up">
+ -->										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4  text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Get Value</h5>
+										  <p class="card-text"> Find the Value from the Key</p>
+							 <a href="#" class="btn btn-primary" data-target="#GETVALUE" data-toggle="modal">GET</a>
+										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Home</h5>
+										  <p class="card-text"> Sign up now & be able to edit and save your keys</p>
+										  <a href="/" class="btn btn-primary">Im ready to sign up</a>
+										</div>
+								</div>
+									  
+						
+						
+						</div>
+						
+					</div>
+				</div>
+			
+</div>
+</form>
+
+
+
+
+</section>
+
+
+<!-- 
+Sign up form  -->
+
+<div class="modal fade" id="GETVALUE" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Get Value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="GETVALUE" method="POST">
+  <div class="form-group">
+    <label >Key</label>
+    <input type="input" class="form-control" id="GETKEY"  name = "GETKEY" placeholder="Key">
+  </div>
+  <div class="form-group">
+    <label >Value:</label>
+    <div id="place_for_suggestions"></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- 
+Sign up form ends -->
+
+<!-- 
+log in form -->
+
+<!-- 
+SET Value form  -->
+
+<div class="modal fade" id="SET" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Set Value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="SETform" method="POST">
+  <div class="form-group">
+    <label >Key</label>
+    <input type="input" class="form-control" id="SetKey"  name = "SetKey" placeholder="Key">
+  </div>
+  <div class="form-group">
+    <label >Value</label>
+    <input type="input" class="form-control" id="SetValue"   name = "SetValue "placeholder="Value">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- 
+login form ends -->
+
+
+<!-- 
+more info form  -->
+
+<div class="modal fade" id="More" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">How it works</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <p> Step 1 : Create User <br>
+        	Step 2 : Login <br> 
+        	After loging in you will have the abality to add to you collecton of value & keys also will have the abality to edit as well. 
+         </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+
+    $(document).ready(function(){
+        var SETFORM = $(".SETform")
+        
+
+        SETFORM.submit(function(e){
+            e.preventDefault();
+            console.log("FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "POST",
+            url : '/setform',
+            data: {
+
+             Key:$('#SetKey').val(),
+             Value:$('#SetValue').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             alert('Registration Successful');
+             $('#SET').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERROR Please Try AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+  // Log In Form
+
+
+    $(document).ready(function(){
+        var GETVAL = $(".GETVALUE")
+        
+
+        GETVAL.submit(function(e){
+            e.preventDefault();
+            console.log("GETVAL FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "POST",
+            url : '/getform',
+            data: {
+
+             Key:$('#GETKEY').val(),
+             Value:$('#GETVALUE').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             // alert(data);
+
+             $("#place_for_suggestions").html(data)
+             $('#Signup').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERROR PLEASE TRY AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+</script>
+
+
+
+<!-- 
+Bootstrap Requirment  -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

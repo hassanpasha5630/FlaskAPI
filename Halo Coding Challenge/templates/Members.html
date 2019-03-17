@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	    
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	   	 <!-- this is for ajax -->
+	   	
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+	<title>User Dash Board</title>
+</head>
+<body>
+<section id="Header"> 
+<div class="container">
+<center><h1 style="margin-top:1em; ">Welcome To Your Memeber Dash Board {{text}}</h1>
+		<h5 style="margin-top: .5em;"> Set & View your Key Values</h5>
+		<h9 style="font-size: 0.7em;">Current User Loged In : {{text}}</h9>
+</center>
+
+</div>
+<form id="options" method="POST">
+<div class="container" style="text-align:center;margin-top:2em">
+					<div class="row">
+								
+						<div class="col-sm-12 col-md-12  col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Set Value</h5>
+										  <p class="card-text"> Set a Key and Value </p>
+
+										  <a href="#" class="btn btn-primary" data-target="#SET" data-toggle="modal">SET</a>
+<!-- 										  <input type = "submit" class="btn btn-primary" name="Sin" value="Sign Up">
+ -->										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4  text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Update Value</h5>
+										  <p class="card-text"> Update the Value from the Key</p>
+							 <a href="#" class="btn btn-primary" data-target="#UpdateVALUE" data-toggle="modal">Update</a>
+							 <a href="#" class="btn btn-danger" data-target="#DEL" data-toggle="modal">DELETE</a>
+
+							 
+										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">View Table</h5>
+										  <p class="card-text"> View Key/Value Table</p>
+										  <input type="button" value="View Table" onClick="location.href=location.href" class="btn btn-warning">
+										  
+										</div>
+								</div>
+									  
+						
+						
+						</div>
+						
+					</div>
+				</div>
+			
+</div>
+</form>
+
+
+<section id=currentKeys>
+	<div id="place_for_suggestions"><center>{{table}}</center></div>
+
+</section>
+
+
+
+</section>
+
+<section>
+	<div class="container">
+	<a href="/logout" class="btn btn-primary">Log Me Out</a>
+
+	</div>
+</section>
+
+<!-- 
+Sign up form  -->
+
+<div class="modal fade" id="UpdateVALUE" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="UpdateVALUE" method="POST">
+  <div class="form-group">
+    <label >Key</label>
+    <input type="input" class="form-control" id="GETKEY"  name = "GETKEY" placeholder="Key">
+  </div>
+  <div class="form-group">
+    <label >Update Value:</label>
+        <input type="input" class="form-control" id="GETVALUE"  name = "GETVALUE" placeholder="New Value">
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- 
+Sign up form ends -->
+
+<!-- 
+log in form -->
+
+<!-- 
+SET Value form  -->
+
+<div class="modal fade" id="SET" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Set Value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="Memsetform" method="POST">
+  <div class="form-group">
+    <label >Key</label>
+    <input type="input" class="form-control" id="SetKey"  name = "SetKey" placeholder="Key">
+  </div>
+  <div class="form-group">
+    <label >Value</label>
+    <input type="input" class="form-control" id="SetValue"   name = "SetValue "placeholder="Value">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- 
+login form ends -->
+
+
+<!-- 
+more delete form  -->
+
+<div class="modal fade" id="DEL" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete Key&Value</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="MemDeleteform" method="DELETE">
+  <div class="form-group">
+    <label >Key</label>
+    <input type="input" class="form-control" id="DELKey"  name = "SetKey" placeholder="Key">
+  </div>
+  
+
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+
+    $(document).ready(function(){
+        var Memsetform = $(".Memsetform")
+        
+
+        Memsetform.submit(function(e){
+            e.preventDefault();
+            console.log("MEM SET FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "POST",
+            url : '/Memsetform',
+            data: {
+
+             Key:$('#SetKey').val(),
+             Value:$('#SetValue').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             alert('Registration Successful');
+             $("#place_for_suggestions").html(data);
+             $('#SET').modal('hide');
+             $('#wrapper').html(data);
+
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERROR Please Try AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+  // Log In Form
+
+
+    $(document).ready(function(){
+        var UpdateVALUE = $(".UpdateVALUE")
+        
+
+        UpdateVALUE.submit(function(e){
+            e.preventDefault();
+            console.log("GETVAL FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "PUT",
+            url : '/MemUpdateform',
+            data: {
+
+             Key:$('#GETKEY').val(),
+             Value:$('#GETVALUE').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             // alert(data);
+
+             
+             $('#UpdateVALUE').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERROR PLEASE TRY AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+    $(document).ready(function(){
+        var MemDeleteform = $(".MemDeleteform")
+        
+
+        MemDeleteform.submit(function(e){
+            e.preventDefault();
+            console.log("MemDeleteform FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "DELETE",
+            url : '/MemDeleteform',
+            data: {
+
+             Key:$('#DELKey').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             // alert(data);
+
+             
+             $('#DEL').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERROR PLEASE TRY AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+
+</script>
+
+
+
+<!-- 
+Bootstrap Requirment  -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

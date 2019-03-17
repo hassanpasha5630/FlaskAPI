@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	    
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	   	 <!-- this is for ajax -->
+	   	
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+	<title>Halo Coding Callenge</title>
+</head>
+<body>
+<section id="Header"> 
+<div class="container">
+<center><h1 style="margin-top:1em; ">Welcome to Halo Coding Challenge </h1>
+		<h5 style="margin-top: .5em;"> Please Select from the bottom optionns </h5>
+		<h9 style="font-size: 0.7em;">Current User Loged In : None</h9>
+
+</center>
+
+</div>
+<form id="options" method="POST">
+<div class="container" style="text-align:center;margin-top:2em">
+					<div class="row">
+								
+						<div class="col-sm-12 col-md-12  col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Login</h5>
+										  <p class="card-text"> If you are already a user please login using this url</p>
+
+										  <a href="#" class="btn btn-primary" data-target="#LogIn" data-toggle="modal">Login</a>
+<!-- 										  <input type = "submit" class="btn btn-primary" name="Sin" value="Sign Up">
+ -->										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4  text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">Sign Up/Try Demo</h5>
+										  <p class="card-text"> What are you waiting for sign up now !</p>
+							 <a href="#" class="btn btn-primary" data-target="#Signup" data-toggle="modal">Sign Up</a>
+							 			<a href="/UserDashBoard" class="btn btn-primary">Try Demo</a>
+
+										</div>
+								</div>
+									  
+						</div>
+					
+						<div class="col-sm-12 col-md-12 col-lg-4 text-center text-md-left text-uppercase mb-4 mb-md-0">
+								<div class="card text-center" style="width: 18rem;">
+										<div class="card-body">
+										  <h5 class="card-title">How it works</h5>
+										  <p class="card-text"> If you are new, find how this all works</p>
+										  <a href="#" class="btn btn-primary" data-target="#More" data-toggle="modal">Help</a>
+										</div>
+								</div>
+									  
+						
+						
+						</div>
+						
+					</div>
+				</div>
+			
+</div>
+</form>
+
+
+
+
+</section>
+
+
+<!-- 
+Sign up form  -->
+
+<div class="modal fade" id="Signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="signupform" method="POST">
+  <div class="form-group">
+    <label >UserName</label>
+    <input type="input" class="form-control" id="UserName"  name = "UserName" placeholder="User Name">
+  </div>
+  <div class="form-group">
+    <label >Password</label>
+    <input type="password" class="form-control" id="InputPassword"   name = "Password"placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- 
+Sign up form ends -->
+
+<!-- 
+log in form -->
+
+<!-- 
+Sign up form  -->
+
+<div class="modal fade" id="LogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">LogIn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       <form class="LogInform" method="POST">
+  <div class="form-group">
+    <label >UserName</label>
+    <input type="input" class="form-control" id="UserName_login"  name = "UserName" placeholder="User Name">
+  </div>
+  <div class="form-group">
+    <label >Password</label>
+    <input type="password" class="form-control" id="InputPassword_login"   name = "Password"placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- 
+login form ends -->
+
+
+<!-- 
+more info form  -->
+
+<div class="modal fade" id="More" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">How it works</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        	
+        <p> Step 1 : Create User <br>
+        	Step 2 : Login <br> 
+        	After loging in you will have the abality to add to you collecton of value & keys also will have the abality to edit as well. 
+         </p>
+         <p> Note : demo accont available for non members</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+
+    $(document).ready(function(){
+        var POPUPFORM = $(".signupform")
+        
+
+        POPUPFORM.submit(function(e){
+            e.preventDefault();
+            console.log("FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "POST",
+            url : '/Signup',
+            data: {
+
+             UserName:$('#UserName').val(),
+             Password:$('#InputPassword').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             alert('Registration Successful');
+             $('#Signup').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('ERRRO Please Try AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+  // Log In Form
+
+
+    $(document).ready(function(){
+        var Login = $(".LogInform")
+        
+
+        Login.submit(function(e){
+            e.preventDefault();
+            console.log("LOGIN FORM IS NOT SENDING ANYMORE")
+            var thisFrom = $(this)
+       
+
+            console.log("serialized",thisFrom.serialize())
+           
+
+
+
+
+         $.ajax({
+            method : "POST",
+            url : '/login',
+            data: {
+
+             UserName_login:$('#UserName_login').val(),
+             Password_login:$('#InputPassword_login').val(),
+            
+            
+            },
+           
+
+         success: function (data) {
+             console.log("Successful")
+             console.log(data)
+             window.location.href = "App";
+             alert('Registration Successful');
+
+
+             $('#Signup').modal('hide');
+
+      	},
+
+          error: function(ERRORDATA){
+            console.log("ERRORDATA")
+            alert('LOGIN ERROR PLEASE TRY AGAIN');
+
+            console.log(ERRORDATA)
+			
+
+
+          }
+
+     });
+         
+
+    });
+
+
+
+
+
+
+    });
+
+
+</script>
+
+
+
+<!-- 
+Bootstrap Requirment  -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
